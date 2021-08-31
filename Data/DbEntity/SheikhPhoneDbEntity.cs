@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Majles.Data.DbEntity
 {
-    class SheikhPhoneDbEntity : PhoneDbEntity
+    public class SheikhPhoneDbEntity : PhoneDbEntity
     {
         public int SheikhId { get; set; }
         public SheikhDbEntity Sheikh { get; set; }
