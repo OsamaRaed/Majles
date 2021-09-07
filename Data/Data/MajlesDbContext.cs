@@ -30,5 +30,15 @@ namespace Majles.Data.Data
         public DbSet<VolunteerDbEntity> Volunteers { get; set; }
         public DbSet<VolunteerPhoneDbEntity> VolunteerPhones { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<BookCategoryDbEntity>().HasKey(x => new { x.BookId, x.CategoryId });
+            modelBuilder.Entity<AttendenceDbEntity>().HasKey(x => new { x.LectureId, x.StudentId });
+            modelBuilder.Entity<AuthorBookDbEntity>().HasKey(x => new { x.BookId, x.AuthorId});
+            modelBuilder.Entity<BookMajlesDbEntity>().HasKey(x => new { x.BookId, x.MajlesId});
+            modelBuilder.Entity<MajlesStudentDbEntity>().HasKey(x => new { x.StudentId, x.MajlesId});
+            modelBuilder.Entity<MajlesVolunteerDbEntity>().HasKey(x => new { x.VolunteerId, x.MajlesId});
+        }
     }
 }
