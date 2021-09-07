@@ -11,7 +11,6 @@ namespace Majles.Data.DbEntity
         public int StudentId { get; set; }
         public StudentDbEntity Student { get; set; }
         public int LectureId { get; set; }
-        public int LectureMajlesId { get; set; }
         public LectureDbEntity Lecture { get; set; }
     }
 }
