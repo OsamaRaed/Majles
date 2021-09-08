@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Majles.Data.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Majles.Web
 {
@@ -24,6 +26,8 @@ namespace Majles.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddDbContext<MajlesDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
