@@ -4,14 +4,16 @@ using Majles.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Majles.Data.Migrations
 {
     [DbContext(typeof(MajlesDbContext))]
-    partial class MajlesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210908132137_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -424,13 +426,13 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.AttendenceDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.StudentDbEntity", "Student")
-                        .WithMany("Attendences")
+                        .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.LectureDbEntity", "Lecture")
-                        .WithMany("Attendences")
+                        .WithMany()
                         .HasForeignKey("LectureId1", "LectureMajlesId");
 
                     b.Navigation("Lecture");
@@ -441,13 +443,13 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.AuthorBookDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.AuthorDbEntity", "Author")
-                        .WithMany("AuthorBooks")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.BookDbEntity", "Book")
-                        .WithMany("AuthorBooks")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -479,13 +481,13 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.BookMajlesDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.BookDbEntity", "Book")
-                        .WithMany("BookMajles")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.MajlesDbEntity", "Majles")
-                        .WithMany("BookMajles")
+                        .WithMany()
                         .HasForeignKey("MajlesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -498,7 +500,7 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.LectureDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.MajlesDbEntity", "Majles")
-                        .WithMany("Lectures")
+                        .WithMany()
                         .HasForeignKey("MajlesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -519,7 +521,7 @@ namespace Majles.Data.Migrations
                         .HasForeignKey("MosqeName");
 
                     b.HasOne("Majles.Data.DbEntity.SheikhDbEntity", "Sheikh")
-                        .WithMany("Majles")
+                        .WithMany()
                         .HasForeignKey("SheikhId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -532,13 +534,13 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.MajlesStudentDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.MajlesDbEntity", "Majles")
-                        .WithMany("MajlesStudents")
+                        .WithMany()
                         .HasForeignKey("MajlesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.StudentDbEntity", "Student")
-                        .WithMany("MajlesStudents")
+                        .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -551,13 +553,13 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.MajlesVolunteerDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.MajlesDbEntity", "Majles")
-                        .WithMany("MajlesVolunteers")
+                        .WithMany()
                         .HasForeignKey("MajlesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.VolunteerDbEntity", "Volunteer")
-                        .WithMany("MajlesVolunteers")
+                        .WithMany()
                         .HasForeignKey("VolunteerUserName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -570,7 +572,7 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.SheikhPhoneDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.SheikhDbEntity", "Sheikh")
-                        .WithMany("SheikhPhones")
+                        .WithMany()
                         .HasForeignKey("SheikhId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -590,7 +592,7 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.StudentPhoneDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.StudentDbEntity", "Student")
-                        .WithMany("StudentPhones")
+                        .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -601,7 +603,7 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.VolunteerPhoneDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.VolunteerDbEntity", "Volunteer")
-                        .WithMany("VolunteerPhones")
+                        .WithMany()
                         .HasForeignKey("VolunteerUserName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -609,18 +611,9 @@ namespace Majles.Data.Migrations
                     b.Navigation("Volunteer");
                 });
 
-            modelBuilder.Entity("Majles.Data.DbEntity.AuthorDbEntity", b =>
-                {
-                    b.Navigation("AuthorBooks");
-                });
-
             modelBuilder.Entity("Majles.Data.DbEntity.BookDbEntity", b =>
                 {
-                    b.Navigation("AuthorBooks");
-
                     b.Navigation("BookCategories");
-
-                    b.Navigation("BookMajles");
                 });
 
             modelBuilder.Entity("Majles.Data.DbEntity.CategoryDbEntity", b =>
@@ -628,50 +621,11 @@ namespace Majles.Data.Migrations
                     b.Navigation("BookCategories");
                 });
 
-            modelBuilder.Entity("Majles.Data.DbEntity.LectureDbEntity", b =>
-                {
-                    b.Navigation("Attendences");
-                });
-
-            modelBuilder.Entity("Majles.Data.DbEntity.MajlesDbEntity", b =>
-                {
-                    b.Navigation("BookMajles");
-
-                    b.Navigation("Lectures");
-
-                    b.Navigation("MajlesStudents");
-
-                    b.Navigation("MajlesVolunteers");
-                });
-
             modelBuilder.Entity("Majles.Data.DbEntity.MosqeDbEntity", b =>
                 {
                     b.Navigation("Lectures");
 
                     b.Navigation("Majles");
-                });
-
-            modelBuilder.Entity("Majles.Data.DbEntity.SheikhDbEntity", b =>
-                {
-                    b.Navigation("Majles");
-
-                    b.Navigation("SheikhPhones");
-                });
-
-            modelBuilder.Entity("Majles.Data.DbEntity.StudentDbEntity", b =>
-                {
-                    b.Navigation("Attendences");
-
-                    b.Navigation("MajlesStudents");
-
-                    b.Navigation("StudentPhones");
-                });
-
-            modelBuilder.Entity("Majles.Data.DbEntity.VolunteerDbEntity", b =>
-                {
-                    b.Navigation("MajlesVolunteers");
-
-                    b.Navigation("VolunteerPhones");
                 });
 #pragma warning restore 612, 618
         }
