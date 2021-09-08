@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Majles.Core\Majles.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
