@@ -43,6 +43,8 @@ namespace Majles.Data.Data
             modelBuilder.Entity<BookMajlesDbEntity>().HasKey(x => new { x.BookId, x.MajlesId});
             modelBuilder.Entity<MajlesStudentDbEntity>().HasKey(x => new { x.StudentId, x.MajlesId});
             modelBuilder.Entity<MajlesVolunteerDbEntity>().HasKey(x => new { x.VolunteerId, x.MajlesId});
+            modelBuilder.Entity<LectureDbEntity>().HasKey(p => new { p.Id, p.MajlesId});
+
         }
     }
 }
