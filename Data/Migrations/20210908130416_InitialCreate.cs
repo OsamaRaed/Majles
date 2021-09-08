@@ -188,8 +188,7 @@ namespace Majles.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SheikhId = table.Column<int>(type: "int", nullable: false),
-                    MosqeId = table.Column<int>(type: "int", nullable: false),
-                    MosqeName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MosqeName = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -201,7 +200,7 @@ namespace Majles.Data.Migrations
                         column: x => x.MosqeName,
                         principalTable: "Mosqes",
                         principalColumn: "Name",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Majles_Sheikhs_SheikhId",
                         column: x => x.SheikhId,
@@ -302,8 +301,7 @@ namespace Majles.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     MajlesId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MosqeId = table.Column<int>(type: "int", nullable: false),
-                    MosqeName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MosqeName = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -321,7 +319,7 @@ namespace Majles.Data.Migrations
                         column: x => x.MosqeName,
                         principalTable: "Mosqes",
                         principalColumn: "Name",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Majles.Data.Migrations
 {
     [DbContext(typeof(MajlesDbContext))]
-    [Migration("20210908122333_InitialCreate")]
+    [Migration("20210908130416_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,11 +158,7 @@ namespace Majles.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MosqeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MosqeName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Title")
@@ -190,11 +186,7 @@ namespace Majles.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MosqeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MosqeName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("SheikhId")
@@ -514,10 +506,8 @@ namespace Majles.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Majles.Data.DbEntity.MosqeDbEntity", "Mosqe")
-                        .WithMany()
-                        .HasForeignKey("MosqeName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Lectures")
+                        .HasForeignKey("MosqeName");
 
                     b.Navigation("Majles");
 
@@ -527,10 +517,8 @@ namespace Majles.Data.Migrations
             modelBuilder.Entity("Majles.Data.DbEntity.MajlesDbEntity", b =>
                 {
                     b.HasOne("Majles.Data.DbEntity.MosqeDbEntity", "Mosqe")
-                        .WithMany()
-                        .HasForeignKey("MosqeName")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Majles")
+                        .HasForeignKey("MosqeName");
 
                     b.HasOne("Majles.Data.DbEntity.SheikhDbEntity", "Sheikh")
                         .WithMany()
@@ -621,6 +609,13 @@ namespace Majles.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Volunteer");
+                });
+
+            modelBuilder.Entity("Majles.Data.DbEntity.MosqeDbEntity", b =>
+                {
+                    b.Navigation("Lectures");
+
+                    b.Navigation("Majles");
                 });
 #pragma warning restore 612, 618
         }
