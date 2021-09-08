@@ -13,5 +13,9 @@ namespace Majles.Data.DbEntity
         public SheikhDbEntity Sheikh { get; set; }
         public string MosqeName { get; set; }
         public MosqeDbEntity Mosqe { get; set; }
+        public List<BookMajlesDbEntity> BookMajles { get; set; }
+        public List<MajlesStudentDbEntity> MajlesStudents { get; set; }
+        public List<MajlesVolunteerDbEntity> MajlesVolunteers { get; set; }
+        public List<LectureDbEntity> Lectures { get; set; }
     }
 }

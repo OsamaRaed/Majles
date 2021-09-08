@@ -11,5 +11,6 @@ namespace Majles.Data.DbEntity
     {
         [Key]
         public string Name { get; set; }
+        public List<BookCategoryDbEntity> BookCategories { get; set; }
     }
 }

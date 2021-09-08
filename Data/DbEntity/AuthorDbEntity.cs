@@ -10,6 +10,7 @@ namespace Majles.Data.DbEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public List<AuthorBookDbEntity> AuthorBooks { get; set; }
 
     }
 }

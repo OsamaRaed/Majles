@@ -12,5 +12,7 @@ namespace Majles.Data.DbEntity
         [Key]
         public string UserName{ get; set; }
         public string Name { get; set; }
+        public List<MajlesVolunteerDbEntity> MajlesVolunteers { get; set; }
+        public List<VolunteerPhoneDbEntity> VolunteerPhones { get; set; }
     }
 }

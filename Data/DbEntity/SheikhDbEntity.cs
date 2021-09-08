@@ -12,5 +12,8 @@ namespace Majles.Data.DbEntity
         public string Name { get; set; }
         public string Email { get; set; }
 
+        public List<SheikhPhoneDbEntity> SheikhPhones { get; set; }
+        public List<MajlesDbEntity> Majles { get; set; }
+
     }
 }

@@ -17,5 +17,9 @@ namespace Majles.Data.DbEntity
         public Gender Gender { get; set; }
         public string RegionId { get; set; }
         public RegionDbEntity Region { get; set; }
+
+        public List<AttendenceDbEntity> Attendences { get; set; }
+        public List<MajlesStudentDbEntity> MajlesStudents { get; set; }
+        public List<StudentPhoneDbEntity> StudentPhones { get; set; }
     }
 }

@@ -17,5 +17,6 @@ namespace Majles.Data.DbEntity
         public string Title { get; set; }
         public string MosqeName { get; set; }
         public MosqeDbEntity Mosqe { get; set; }
+        public List<AttendenceDbEntity> Attendences { get; set; }
     }
 }
