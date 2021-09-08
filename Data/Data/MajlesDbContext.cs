@@ -10,6 +10,10 @@ namespace Majles.Data.Data
 {
     public class MajlesDbContext : DbContext
     {
+        public MajlesDbContext(DbContextOptions<MajlesDbContext> options) : base(options)
+        {
+        }
+
         public DbSet<AttendenceDbEntity> Attendances { get; set; }
         public DbSet<AuthorBookDbEntity> AuthorBooks { get; set; }
         public DbSet<AuthorDbEntity> Authors { get; set; }
